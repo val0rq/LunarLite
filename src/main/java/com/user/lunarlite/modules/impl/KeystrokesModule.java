@@ -35,7 +35,6 @@ public class KeystrokesModule extends HudModule {
         int txtX = kX + (22 - txtWidth) / 2;
         int txtY = kY + (22 - client.textRenderer.fontHeight) / 2 + 1;
         
-        // Using drawTextWithShadow as confirmed by your search result
         context.drawTextWithShadow(client.textRenderer, text, txtX, txtY, txtColor);
     }
 }
