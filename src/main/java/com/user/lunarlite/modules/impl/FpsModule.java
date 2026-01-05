@@ -9,10 +9,9 @@ public class FpsModule extends HudModule {
 
     @Override
     public void render(DrawContext context, MinecraftClient client) {
-        String textStr = client.getCurrentFps() + " FPS";
-        Text text = Text.literal(textStr);
+        Text text = Text.literal(client.getCurrentFps() + " FPS");
         this.width = client.textRenderer.getWidth(text);
         this.height = client.textRenderer.fontHeight;
-        context.drawText(client.textRenderer, text, x, y, getColor(), true);
+        context.drawTextWithShadow(client.textRenderer, text, x, y, getColor());
     }
 }

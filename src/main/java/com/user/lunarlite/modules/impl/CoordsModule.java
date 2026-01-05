@@ -10,10 +10,10 @@ public class CoordsModule extends HudModule {
     @Override
     public void render(DrawContext context, MinecraftClient client) {
         if (client.player == null) return;
-        String textStr = String.format("%.0f, %.0f, %.0f", client.player.getX(), client.player.getY(), client.player.getZ());
-        Text text = Text.literal(textStr);
+        String coordsStr = String.format("%.0f, %.0f, %.0f", client.player.getX(), client.player.getY(), client.player.getZ());
+        Text text = Text.literal(coordsStr);
         this.width = client.textRenderer.getWidth(text);
         this.height = client.textRenderer.fontHeight;
-        context.drawText(client.textRenderer, text, x, y, getColor(), true);
+        context.drawTextWithShadow(client.textRenderer, text, x, y, getColor());
     }
 }
