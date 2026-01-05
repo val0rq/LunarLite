@@ -1,1 +1,11 @@
-rootProject.name = 'lunarlite'
+pluginManagement {
+    repositories {
+        maven {
+            name = "Fabric"
+            url = "https://maven.fabricmc.net/"
+        }
+        gradlePluginPortal()
+    }
+}
+
+rootProject.name = "lunarlite"
