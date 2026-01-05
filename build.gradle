@@ -1,5 +1,5 @@
 plugins {
-	id 'fabric-loom' version '1.9-SNAPSHOT'
+	id 'fabric-loom' version '1.10-SNAPSHOT'
 	id 'maven-publish'
 }
 
@@ -17,7 +17,7 @@ repositories {
 dependencies {
 	minecraft "com.mojang:minecraft:${project.minecraft_version}"
 	
-    // FIX: We exclude unpick definitions because they are causing version mismatch errors
+    // We try to exclude unpick definitions just in case, but the plugin update should fix it
     mappings("net.fabricmc:yarn:${project.yarn_mappings}:v2") {
         exclude group: 'net.fabricmc', module: 'unpick-definitions'
     }
