@@ -35,7 +35,8 @@ public class HudManager {
 
     public static void renderAll(DrawContext context, float delta) {
         MinecraftClient client = MinecraftClient.getInstance();
-        if (client.options.hudHidden) return;
+        if (client.options.hudHidden) return; // Hide when F1
+        
         for (HudModule m : modules) {
             if (m.isEnabled()) m.render(context, client);
         }

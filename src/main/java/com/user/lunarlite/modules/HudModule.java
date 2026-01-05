@@ -20,8 +20,15 @@ public abstract class HudModule {
     
     public void renderDummy(DrawContext context) {
         context.fill(x, y, x + width, y + height, 0x40000000);
-        context.drawBorder(x, y, width, height, 0xFFFFFFFF);
+        drawBox(context, x, y, width, height, 0xFFFFFFFF);
         render(context, MinecraftClient.getInstance());
+    }
+
+    public void drawBox(DrawContext context, int x, int y, int w, int h, int color) {
+        context.fill(x, y, x + w, y + 1, color); // Top
+        context.fill(x, y + h - 1, x + w, y + h, color); // Bottom
+        context.fill(x, y, x + 1, y + h, color); // Left
+        context.fill(x + w - 1, y, x + w, y + h, color); // Right
     }
 
     public int getColor() {

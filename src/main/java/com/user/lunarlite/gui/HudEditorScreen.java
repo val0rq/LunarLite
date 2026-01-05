@@ -26,10 +26,17 @@ public class HudEditorScreen extends Screen {
             if (m.isEnabled()) {
                 m.renderDummy(context);
                 if (isHovering(m, mouseX, mouseY)) {
-                    context.drawBorder(m.x - 1, m.y - 1, m.width + 2, m.height + 2, 0xFF00FF00);
+                    drawBox(context, m.x - 1, m.y - 1, m.width + 2, m.height + 2, 0xFF00FF00);
                 }
             }
         }
+    }
+    
+    public void drawBox(DrawContext context, int x, int y, int w, int h, int color) {
+        context.fill(x, y, x + w, y + 1, color); 
+        context.fill(x, y + h - 1, x + w, y + h, color); 
+        context.fill(x, y, x + 1, y + h, color); 
+        context.fill(x + w - 1, y, x + w, y + h, color); 
     }
 
     @Override

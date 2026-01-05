@@ -5,6 +5,8 @@ import com.user.lunarlite.gui.MainMenuScreen;
 import com.user.lunarlite.modules.HudManager;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
+import net.fabricmc.fabric.api.client.rendering.v1.HudRenderCallback;
+import net.minecraft.client.render.RenderTickCounter;
 import org.lwjgl.glfw.GLFW;
 
 public class LiteClient implements ClientModInitializer {
@@ -14,6 +16,11 @@ public class LiteClient implements ClientModInitializer {
     public void onInitializeClient() {
         ConfigManager.load();
         HudManager.init();
+
+        // Safe HUD Rendering Hook (No Mixin Crash)
+        HudRenderCallback.EVENT.register((context, tickCounter) -> {
+            HudManager.renderAll(context, tickCounter.getTickDelta(false));
+        });
 
         ClientTickEvents.END_CLIENT_TICK.register(client -> {
             if (client.player == null) return;
